@@ -1,0 +1,8 @@
+FROM python:3.10-slim
+WORKDIR /app
+COPY requirements-dash.txt .
+RUN pip install --no-cache-dir -r requirements-dash.txt
+COPY dashboard.py /
+# The dashboard reads CSV from a shared `data` mount at /data
+EXPOSE 8050
+CMD ["python", "/dashboard.py"]

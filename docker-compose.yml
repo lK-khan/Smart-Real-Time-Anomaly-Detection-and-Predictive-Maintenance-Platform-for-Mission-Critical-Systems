@@ -1,0 +1,31 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    volumes:
+      - data-volume:/data
+    ports:
+      - "5000:5000"
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dash
+    depends_on:
+      - api
+    volumes:
+      - data-volume:/data
+    ports:
+      - "8050:8050"
+
+  simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile.sim
+    depends_on:
+      - api
+  
+volumes:
+  data-volume:
+    # persists sensor_data.csv between api & dashboard

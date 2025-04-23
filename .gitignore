@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Virtual environments
+proj/            # if your venv folder is named proj/
+.venv/
+
+# Data & logs
+*.csv
+*.log
+
+# Mac/Linux
+.DS_Store
+*.swp

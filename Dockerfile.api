@@ -1,0 +1,7 @@
+FROM python:3.10-slim
+WORKDIR /app
+COPY requirements-api.txt .
+RUN pip install --no-cache-dir -r requirements-api.txt
+COPY ingest.py anomaly_clf.joblib sensor_ohe.joblib scaler.joblib fail_clf.joblib sensor_ohe_fp.joblib scaler_fp.joblib ./
+EXPOSE 5000
+CMD ["python", "ingest.py"]
